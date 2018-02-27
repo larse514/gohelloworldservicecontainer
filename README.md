@@ -23,8 +23,18 @@ sudo docker build -t gohelloworldservice .
 sudo docker run -p 80:8080 gohelloworldservice &
 
 curl localhost/this/is/a/test
+
 // The above command will give the following reply:
+
 // {"Code":"200","Message":"You hit the endpoint: /this/is/a/test"}
+
+curl -d '{"key1":"value1", "key2":"value2"}' -H "Content-Type: application/json" -X POST http://localhost/data
+
+// The above command will give the following reply:
+
+// {"Code":"200","Message":"You hit the endpoint: /data"}
+
+
 
 
 
