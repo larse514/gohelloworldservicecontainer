@@ -1,4 +1,5 @@
 
+# WARNING - not yet fit for general consumption
 This needs a lot of work, but the basic working framework of it is there.
 
 parking it here as a TODO
@@ -11,6 +12,7 @@ parking it here as a TODO
 
 # Building
 Right now this is kind of low-brow brute force. This script hopefully is building a statically bound executable, so it won't be dependent on various c dynamic libraries.
+
 cheapo-build.sh 
 
 # Dockerizing
@@ -21,7 +23,9 @@ sudo docker build -t gohelloworldservice .
 sudo docker run -p 80:8080 gohelloworldservice &
 
 curl localhost/this/is/a/test
-{"Code":"200","Message":"You hit the endpoint: /this/is/a/test"}
+// The above command will give the following reply:
+// {"Code":"200","Message":"You hit the endpoint: /this/is/a/test"}
+
 
 
 
