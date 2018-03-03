@@ -10,7 +10,7 @@ jobs:
     steps:
     - checkout
     - run: mkdir -p $TEST_RESULTS
-
+    - run: sudo docker service start
     - restore_cache:
         keys:
           - v1-pkg-cache
