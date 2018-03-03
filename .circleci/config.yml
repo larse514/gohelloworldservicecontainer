@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: /go/src/github.com/larse514/gohelloworldservicecontainer
     docker:
-      - image: larse514/circleci-golang:latest
+      - image: docker:17.12.0-ce-git
     environment:
       TEST_RESULTS: /tmp/test-results
       IMAGE: hello
