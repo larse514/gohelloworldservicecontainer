@@ -2,7 +2,7 @@ GOFILES = $(shell find . -name '*.go' -not -path './vendor/*')
 default: build
 
 build: 
-	docker build . --tag ${TAG}
+	sudo docker build . --tag ${TAG}
 
 dependencies: 
 	@go get net/http
