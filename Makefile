@@ -17,3 +17,7 @@ test-min:
 
 run:
 	docker run -p 8080:8080 -d ${TAG} 
+
+release:
+	docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+	docker push ${TAG}

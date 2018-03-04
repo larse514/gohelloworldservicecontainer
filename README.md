@@ -3,37 +3,23 @@
 This needs a lot of work, but the basic working framework of it is there.
 
 parking it here as a TODO
+<br/>
+**NOTE:** CI is currently not working due to issue starting Docker in circleci container
 
 # Substantial TODO list
-1) Needs a proper makefile
-2) Needs a proper CI pipeline handling
-3) probably needs some work and review on the dockerizing
-4) needs to push to a repo
+1) Needs a proper CI pipeline handling
+2) probably needs some work and review on the dockerizing
+3) needs to push to a repo
 
-# Building
-Right now this is kind of low-brow brute force. This script hopefully is building a statically bound executable, so it won't be dependent on various c dynamic libraries.
+# Multi-Stage build
+This application uses a multi-stage build to both compartmentalize the build soley into the Dockerfile as well as to reduce the image size.  When packed this reduces the image to ~5mb.  
 
-cheapo-build.sh 
-
-# Dockerizing
-This is minimum viable product
-
-sudo docker build -t gohelloworldservice .
-
-sudo docker run -p 80:8080 gohelloworldservice &
-
-curl localhost/this/is/a/test
-
-// The above command will give the following reply:
-
-// {"Code":"200","Message":"You hit the endpoint: /this/is/a/test"}
-
-curl -d '{"key1":"value1", "key2":"value2"}' -H "Content-Type: application/json" -X POST http://localhost/data
-
-// The above command will give the following reply:
-
-// {"Code":"200","Message":"You hit the endpoint: /data"}
-
+# Makefile
+A simple Makefile is included to perform the following: <br/> 
+1) Run GO unit tests
+2) Build Dockerfile with specified tag
+3) Run Docker container locally
+4) Push Docker image to DockerHub repository
 
 
 
