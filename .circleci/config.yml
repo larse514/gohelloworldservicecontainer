@@ -9,6 +9,18 @@ jobs:
       IMAGE: larse514/gohelloworldservicecontainer
     steps:
     - checkout
+    - type: shell
+      name: Install Docker Client
+      command: |
+        echo "test"
+        curl -L -o /tmp/docker.tgz https://get.docker.com/builds/Linux/x86_64/docker-1.12.3.tgz
+        tar -xz -C /tmp -f /tmp/docker.tgz
+        mv /tmp/docker/docker* /usr/bin/
+
+        curl -L "https://github.com/docker/compose/releases/download/1.9.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
+        chmod +x  /usr/bin/docker-compose
+
+    - type: setup-docker-engine
     - run: mkdir -p $TEST_RESULTS
     - restore_cache:
         keys:
@@ -23,7 +35,7 @@ jobs:
         command: |
           trap "go-junit-report <${TEST_RESULTS}/go-test.out > ${TEST_RESULTS}/go-test-report.xml" EXIT
           make test | tee ${TEST_RESULTS}/go-test.out
-    - run: make TAG="${IMAGE}:0.0.${CIRCLE_BUILD_NUM}"
+    - run: make TAG="${IMAGE}:${CIRCLE_BUILD_NUM}"
     - run:
         name: Run integration tests
         command: |
