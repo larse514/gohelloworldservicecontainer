@@ -6,15 +6,15 @@ parking it here as a TODO
 <br/>
 **NOTE:** CI is currently not working due to issue starting Docker in circleci container
 
-# Substantial TODO list
+### Substantial TODO list
 1) Needs a proper CI pipeline handling
 2) probably needs some work and review on the dockerizing
 3) needs to push to a repo
 
-# Multi-Stage build
+### Multi-Stage build
 This application uses a multi-stage build to both compartmentalize the build soley into the Dockerfile as well as to reduce the image size.  When packed this reduces the image to ~5mb.  
 
-# Makefile
+### Makefile
 A simple Makefile is included to perform the following: <br/> 
 1) Run GO unit tests
 2) Build Dockerfile with specified tag
