@@ -6,11 +6,10 @@ jobs:
       - image: larse514/circleci-golang:latest
     environment:
       TEST_RESULTS: /tmp/test-results
-      IMAGE: hello
+      IMAGE: larse514/gohelloworldservicecontainer
     steps:
     - checkout
     - run: mkdir -p $TEST_RESULTS
-    - run: sudo service docker start
     - restore_cache:
         keys:
           - v1-pkg-cache
